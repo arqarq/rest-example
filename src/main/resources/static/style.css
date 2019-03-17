@@ -1,0 +1,24 @@
+table {
+    border-collapse: collapse
+}
+
+table {
+    border: 2px solid #606df5
+}
+
+th {
+    border-bottom: 2px solid #606df5;
+    border-right: 1px dotted #606df5
+}
+
+th:last-of-type {
+    border-right: none;
+}
+
+td {
+    border: 1px dotted #606df5
+}
+
+tbody tr:hover {
+    background-color: #3acef5
+}

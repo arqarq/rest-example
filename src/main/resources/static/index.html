@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Okna</title>
+    <script defer src="jquery-3.3.1.min.js"></script>
+    <script defer src="script.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th><code>id</code></th>
+        <th>szerokość</th>
+        <th>wysokość</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="table-rows">
+    <tr id="row-template" style="display: none">
+        <td class="cell-id"></td>
+        <td class="cell-width"></td>
+        <td class="cell-height"></td>
+        <td>
+            <input class="cell-button" type="button" value="Usuń">
+        </td>
+    </tr>
+    </tbody>
+</table>
+<form>
+    <div>
+        <label for="input-width">Szerokość: </label>
+        <input id="input-width" type="number">
+    </div>
+    <!--<div>-->
+    <label for="input-height">Wysokość: </label>
+    <input id="input-height" type="number">
+    <!--</div>-->
+    <input id="button-add" type="button" value="Dodaj">
+</form>
+<form>
+    <!--<div>-->
+    <label for="input-id-delete">Wpisz <code>id</code> okna do usunięcia: </label>
+    <input id="input-id-delete" type="number">
+    <!--</div>-->
+    <input id="button-delete" type="button" value="Usuń">
+</form>
+</body>
+</html>
