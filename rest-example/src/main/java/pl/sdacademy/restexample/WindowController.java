@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class WindowController {
-    @RequestMapping("/")
+    @RequestMapping(path = "/")
     public String goToView() {
-        return "/index-view.html";
+        return "index-view.html";
     }
 }
