@@ -2,7 +2,7 @@ console.log("Hello console!");
 
 function reloadTableRows() {
     $.ajax({
-        url: "http://localhost:8080/windows",
+        url: "http://localhost/windows",
         method: "get",
         success: function (windows) { // może być anonimowa, ale np. onSuccess() będzie nazwa wyświetlona przy stack trace
             $("#table-rows > tr:not(#row-template)").remove();
@@ -16,11 +16,16 @@ function reloadTableRows() {
                 $row.find(".cell-id").text(window.id);
                 $row.find(".cell-width").text(window.width);
                 $row.find(".cell-height").text(window.height);
-                $row.find(".cell-button").click(function () {
-                    buttonDeleteById(window.id)
-                });
+                // $row.find(".cell-button").click(function () {
+                //     buttonDeleteById(window.id)
+                // });
+                $row.data("window-id", window.id);
                 $("#table-rows").append($row);
             }
+            $(".cell-button").click(function () {
+                const windowId = $(this).closest("tr").data("window-id");
+                buttonDeleteById(windowId)
+            })
             // $rowTemplate.remove()
         }
     });
@@ -35,13 +40,14 @@ $("#button-add").click(function () {
         height: height
     };
     $.ajax({
-        url: "http://localhost:8080/windows",
+        url: "http://localhost/windows",
         method: "post",
         contentType: "application/json",
         data: JSON.stringify(window),
         success: function (window) {
             // alert("-" + window.id + " " + window.width + " " + window.height);
-            reloadTableRows()
+            reloadTableRows();
+            alert("dodano okno z id: " + window.id)
         }
     })
 });
@@ -49,11 +55,12 @@ $("#button-add").click(function () {
 function buttonDeleteById(id) {
     console.log("usunięcie");
     $.ajax({
-        url: `http://localhost:8080/windows/${id}`,
+        url: `http://localhost/windows/${id}`,
         // url: "http://localhost:8080/windows/" + id,
         method: "delete",
-        success: function () {
-            reloadTableRows()
+        success: function (window) {
+            reloadTableRows();
+            alert("usunięto okno z id: " + window.id)
         }
     })
 }

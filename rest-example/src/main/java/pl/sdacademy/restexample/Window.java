@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Window {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private int width;
     private int height;
 
@@ -20,7 +20,7 @@ public class Window {
         super();
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

@@ -3,14 +3,13 @@ package pl.sdacademy.restexample;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/windows")
-public class WindowController {
+public class WindowRestController {
     private WindowRepository windowRepository;
 
-    private WindowController(WindowRepository windowRepository) {
+    private WindowRestController(WindowRepository windowRepository) {
         this.windowRepository = windowRepository;
     }
 
@@ -31,8 +30,9 @@ public class WindowController {
 
     @DeleteMapping("/{id}")
     public Window delete(@PathVariable long id) {
-        Optional<Window> byId = windowRepository.findById(id);
-        byId.ifPresent(window -> windowRepository.delete(window));
-        return new Window();  // dla konsoli firefox - brak błędy gdy coś zwróci
+        Window windowById = windowRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Brak okna o zadanym id"));
+        windowRepository.delete(windowById);
+        return windowById; // dla konsoli firefox - brak błędy gdy coś zwróci
     }
 }
