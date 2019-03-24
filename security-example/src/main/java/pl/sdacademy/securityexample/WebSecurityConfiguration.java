@@ -24,6 +24,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         // super.configure(http);
         http.httpBasic()
                 .and()
+                .csrf()
+                .disable()
+
                 .authorizeRequests()
 
                 .antMatchers("/page/**", "/unauthorized/**")

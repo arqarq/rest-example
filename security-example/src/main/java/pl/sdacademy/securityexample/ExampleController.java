@@ -10,10 +10,10 @@ import java.security.Principal;
 
 @RestController
 public class ExampleController {
-    @GetMapping
-    public String example() {
-        return "abcde";
-    }
+    // @GetMapping
+    // public String example() {
+    //     return "abcde";
+    // }
 
     @GetMapping("/admin/abc")
     public String adminRoleExample() {
