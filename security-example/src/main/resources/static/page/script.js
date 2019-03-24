@@ -31,3 +31,18 @@ $("#button-login").click(function () {
         }
     });
 });
+
+$("#button-logout").click(function () {
+    $.ajax({
+        method: "post",
+        url: "http://localhost:8080/login",
+        headers: {
+            "Authorization": "Basic " + btoa(":")
+        },
+        error: function () {
+            alert("Wylogowano!");
+            $("#form-login").show();
+            $("#div-logged-in").hide();
+        }
+    });
+});
