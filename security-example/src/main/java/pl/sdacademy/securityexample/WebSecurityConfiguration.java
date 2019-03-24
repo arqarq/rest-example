@@ -25,10 +25,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/unauthorized/**")
+
+                .antMatchers("/page/**", "/unauthorized/**")
                 .permitAll()
+
                 .antMatchers("/admin/**")
                 .hasRole("ADMIN")
+
                 .anyRequest()
                 .authenticated();
     }
