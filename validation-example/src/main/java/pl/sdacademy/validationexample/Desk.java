@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,7 +17,7 @@ public class Desk {
     private boolean wooden;
     @Max(5)
     private int drawerCount;
-    @NotNull
+    @NotEmpty
     private String color;
     @Column(unique = true)
     private String serialNo;
